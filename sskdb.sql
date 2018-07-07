@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2018 at 07:05 PM
+-- Generation Time: Jul 08, 2018 at 01:03 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -21,6 +21,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `sskdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `beneficiary`
+-- (See below for the actual view)
+--
+CREATE TABLE `beneficiary` (
+`schedule_date` date
+,`schedule_time` time
+,`doctor_id` int(6)
+,`doctor_name` varchar(30)
+,`email_id` varchar(50)
+,`contact_number` int(10)
+,`deptname` varchar(30)
+);
 
 -- --------------------------------------------------------
 
@@ -48,7 +64,21 @@ INSERT INTO `department` (`dno`, `dname`) VALUES
 (8, 'Pschologist'),
 (9, 'Ocupational Theparist'),
 (10, 'Physiotherapist '),
-(11, 'Dummy');
+(11, 'Dummy'),
+(12, 'speech_level');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `departmentview`
+-- (See below for the actual view)
+--
+CREATE TABLE `departmentview` (
+`dname` varchar(30)
+,`emp_name` varchar(30)
+,`phone_no` int(10)
+,`email_id` varchar(50)
+);
 
 -- --------------------------------------------------------
 
@@ -84,6 +114,18 @@ INSERT INTO `patient` (`name`, `dob`, `parent_name`, `phone_no`, `reg_no`, `age`
 ('kumar', '1997-08-01', 'Adwani', 25678900, 'P784', 6, 1),
 ('Kanya', '1996-06-07', 'Tanya', 23123244, 'P908', 16, 9),
 ('Andrew', '1994-06-08', 'Koyal', 23409099, 'P98', 12, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `professsionalview`
+-- (See below for the actual view)
+--
+CREATE TABLE `professsionalview` (
+`schedule_date` date
+,`schedule_time` time
+,`name` varchar(30)
+);
 
 -- --------------------------------------------------------
 
@@ -188,6 +230,33 @@ INSERT INTO `workers` (`emp_id`, `emp_name`, `phone_no`, `email_id`, `role_id`, 
 (112, 'Subbalakshmi', 25224265, 'subbalakshmi@ssk.in', 1, 11, 'msw'),
 (221, 'Sujana', 26511133, 'sujana@ssk.in', 3, 11, 'rrr'),
 (222, 'Aparna Gupta', 26511135, 'aparna@ssk.in', 3, 11, 'rrr');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `beneficiary`
+--
+DROP TABLE IF EXISTS `beneficiary`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `beneficiary`  AS  select `schedule`.`schedule_date` AS `schedule_date`,`schedule`.`schedule_time` AS `schedule_time`,`schedule`.`doctor_id` AS `doctor_id`,`workers`.`emp_name` AS `doctor_name`,`workers`.`email_id` AS `email_id`,`workers`.`phone_no` AS `contact_number`,`department`.`dname` AS `deptname` from ((`schedule` join `workers`) join `department`) where ((`schedule`.`doctor_id` = `workers`.`emp_id`) and (`workers`.`role_id` = 2) and (`workers`.`dno` = `department`.`dno`) and (`schedule`.`reg_no` = 'P784')) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `departmentview`
+--
+DROP TABLE IF EXISTS `departmentview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `departmentview`  AS  select `department`.`dname` AS `dname`,`workers`.`emp_name` AS `emp_name`,`workers`.`phone_no` AS `phone_no`,`workers`.`email_id` AS `email_id` from (`workers` join `department`) where ((`workers`.`dno` = `department`.`dno`) and (`workers`.`role_id` = 2)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `professsionalview`
+--
+DROP TABLE IF EXISTS `professsionalview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `professsionalview`  AS  select `schedule`.`schedule_date` AS `schedule_date`,`schedule`.`schedule_time` AS `schedule_time`,`patient`.`name` AS `name` from (`schedule` join `patient`) where ((`schedule`.`doctor_id` = 10) and (`schedule`.`reg_no` = `patient`.`reg_no`)) ;
 
 --
 -- Indexes for dumped tables
