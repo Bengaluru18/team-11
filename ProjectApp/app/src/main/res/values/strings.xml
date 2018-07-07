@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">SSKPROJECT</string>
+    <string name="Logo_desc">Prakruthi Farms Logo</string>
+    <string name="user_id_hint">Email ID</string>
+    <string name="password_hint">Password</string>
+</resources>
