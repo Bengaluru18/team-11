@@ -12,10 +12,10 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 	function mswvalidate(form){
 	var i;
-	chks=document.getElementsById('button');
+	chks=document.getElementsById('msw');
 	for(i=0;i<chks.length;i++){
 	if(chks[i].checked){
-		if(chks[i]=='speechtherapist')
+		if(chks[i]=='speechlevel')
 		{
 			if((chks[i+1]=='psychology' && chks[i+1].checked==true))
 			{
@@ -48,9 +48,9 @@
         <a class="navbar-brand" href="#">Spastics Society of Karnataka</a>
       </div>
       <ul class="nav navbar-nav">
-        <li ><a href="#">Reception</a></li>
+        <li ><a href="admin.html">Admin</a></li>
         <li class="active"><a href="#">MSW</a></li>
-        <li><a href="#">Registration</a></li>
+        <li><a href="registration.html">Registration</a></li>
       </ul>
     </div>
   </nav>
@@ -59,28 +59,31 @@
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>Medico Social Worker</h1>
+		<h1>Medical Social Worker</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#"  method="post">
 					<!-- 10 departments (whatever names are available) -->
-					<input class="text" type="checkbox" name="msw" value="psychiatrist"> Psychiatrist <br>
-  					<input class="text" type="checkbox" name="msw" value="psychologist"> Psychologist <br>
-  					<input class="text" type="checkbox" name="msw" value="orthopeadic"> Orthopeadic <br>
-  					<input class="text" type="checkbox" name="msw" value="paediatrics"> Paediatrics <br>
-  					<input class="text" type="checkbox" name="msw" value="physiotherapist"> Physiotherapist <br>
-  					<input class="text" type="checkbox" name="msw" value="ophthamologist"> Ophthamologist <br>
- 					<input class="text" type="checkbox" name="msw" value="speechtherapist"> Speech Therapist <br>
-  					<input class="text" type="checkbox" name="msw" value="specialeducator"> Special Educator <br>
-  					<input class="text" type="checkbox" name="msw" value="dentist"> Dentist  <br>
-  					<input class="text" type="checkbox" name="msw" value="neurologist"> Neurologist  <br>
+					RegId<input class ="text" type="text" name="regid" > 
+					<input class="text" type="checkbox" name="paediatrics" id="msw" value="paediatrics"> Paediatric Neurologist <br>
+					<input class="text" type="checkbox" name="orthopeadic" id="msw" value="orthopeadic"> Orthopeadic Surgeon <br>
+					<input class="text" type="checkbox" name="msw" id="msw" value="ophthamologist"> Ophthamologist <br>
+					<input class="text" type="checkbox" name="msw" id="msw" value="entsurgeon"> ENT Surgeon <br>
+
+					<input class="text" type="checkbox" name="msw" id="msw" value="dentalclinic"> Dental Clinic <br>
+					<input class="text" type="checkbox" name="msw"  id="msw" value="psychiatrist"> Psychiatrist <br>
+					<input class="text" type="checkbox" name="msw" id="msw"  value="speechlevel"> Speech Level <br>
+					<input class="text" type="checkbox" name="msw" id="msw" value="psychologist"> Psychologist <br>
+					<input class="text" type="checkbox" name="msw" id="msw"  value="specialeducator"> Special Educator <br>
+  					<input class="text" type="checkbox" name="msw" id="msw"  value="occupationaltherapist"> Occupational Therapist <br>
+ 					<input class="text" type="checkbox" name="msw" id="msw"  value="physiotherapist"> Physiotherapist <br>
 					<br>
 					<div class="wthree-text">
 						<label class="anim">
 						</label>
 						<div class="clear"> </div>
 					</div>
-					<input type="submit" value="SUBMIT" onsubmit="return mswvalidate(this)">
+					<input type="Submit" value="submit" onsubmit="mswvalidate(this)">
 				</form>
 			</div>
 		</div>
