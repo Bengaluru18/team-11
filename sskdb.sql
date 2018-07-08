@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2018 at 01:03 AM
+-- Generation Time: Jul 08, 2018 at 04:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -61,7 +61,7 @@ INSERT INTO `department` (`dno`, `dname`) VALUES
 (5, 'Dental Clinic'),
 (6, 'Psychiatrists'),
 (7, 'Special Educators'),
-(8, 'Pschologist'),
+(8, 'Psychologist'),
 (9, 'Ocupational Theparist'),
 (10, 'Physiotherapist '),
 (11, 'Dummy'),
@@ -79,6 +79,35 @@ CREATE TABLE `departmentview` (
 ,`phone_no` int(10)
 ,`email_id` varchar(50)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hie_app`
+--
+
+CREATE TABLE `hie_app` (
+  `dname` varchar(30) NOT NULL,
+  `approverdname` varchar(30) NOT NULL,
+  `approvername` varchar(30) NOT NULL,
+  `approverphno` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hie_app`
+--
+
+INSERT INTO `hie_app` (`dname`, `approverdname`, `approvername`, `approverphno`) VALUES
+('Dental Clinic', 'MSW', 'Nanjundappa', 24356781),
+('ENT Surgeon', 'speech_level', 'Laksmi', 23453211),
+('Ocupational Theparist', 'Ocupational Theparist', 'Vinay', 23256743),
+('Ophthalmologist', 'MSW', 'Sanajana', 25244879),
+('Orthopedic Surgeon', 'Physiotherapist', 'Jayalaksmi', 23423421),
+('Paediatric Neurologist', 'MSW', 'Kailash Nair', 25635478),
+('Physiotherapist ', 'Physiotherapist ', 'Rahul Shivakumar', 23245632),
+('Psychiatrists', 'MSW', 'Suraj', 23134621),
+('Special Educators', 'MSW', 'Renuka', 23567121),
+('speech_level', 'speech_level', 'Jayalata', 23221221);
 
 -- --------------------------------------------------------
 
@@ -267,6 +296,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`dno`);
+
+--
+-- Indexes for table `hie_app`
+--
+ALTER TABLE `hie_app`
+  ADD PRIMARY KEY (`dname`,`approverdname`),
+  ADD UNIQUE KEY `unique` (`approverphno`);
 
 --
 -- Indexes for table `patient`
