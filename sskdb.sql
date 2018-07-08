@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2018 at 04:04 AM
+-- Generation Time: Jul 08, 2018 at 04:10 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -100,6 +100,7 @@ CREATE TABLE `hie_app` (
 INSERT INTO `hie_app` (`dname`, `approverdname`, `approvername`, `approverphno`) VALUES
 ('Dental Clinic', 'MSW', 'Nanjundappa', 24356781),
 ('ENT Surgeon', 'speech_level', 'Laksmi', 23453211),
+('Neurologist', 'MSW', 'Harshita', 2343212),
 ('Ocupational Theparist', 'Ocupational Theparist', 'Vinay', 23256743),
 ('Ophthalmologist', 'MSW', 'Sanajana', 25244879),
 ('Orthopedic Surgeon', 'Physiotherapist', 'Jayalaksmi', 23423421),
