@@ -1,7 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "mysql";
+$host="localhost";
+$dbusername="root";
+$dbpass="root";
+$dbname="sskdb";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);

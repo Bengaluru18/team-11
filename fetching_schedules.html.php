@@ -15,9 +15,9 @@
 </head>
 <body>
     <?php
-$host="localhost";
-$dbusername="root";
-$dbpass="root";
+$host="13.250.26.71";
+$dbusername="abc";
+$dbpass="123";
 $dbname="sskdb";
 // Create connection
 $conn = new mysqli($host, $dbusername, $dbpass, $dbname);
@@ -28,36 +28,30 @@ if ($conn->connect_error) {
 
 $sql = "SELECT schedule_time, schedule_date, doctor_id,reg_no,status_id FROM schedule";
 $result = $conn->query($sql);
-echo "<table border='1'>
-<tr>
-<th><b>--Schedule Time--</b></th>
-<th><b>--Schedule Date--</b></th>
-<th><b>--Doctor ID--</b></th>
-<th><b>--Registration-- ID</b></th>
-</tr>";
+
 if ($result->num_rows > 0) {
     // output data of each row
-	
     while($row = $result->fetch_assoc()) {
       //  echo "Schedule Time: " . $row["schedule_time"]. " - Schedule Date: " . $row["schedule_date"]. "Doctor Id " . $row["doctor_id"]. "Registration Num " . $row["reg_no"]."Registration Num ". $row["status_id"]. "<br>";
-    echo "<tr>";
-echo "<td>" . $row["schedule_time"]. "</td>";
-echo "<td>" . $row["schedule_date"]. "</td>";
-echo "<td>" . $row["doctor_id"]. "</td>";
-echo "<td>" . $row["reg_no"]. "</td>";
-echo "</tr>";
-}
-echo "</table>";
+    echo "<tr><td>" . $row['schedule_time'] . "</td><td>" . $row['schedule_date'] . "</td></tr>";
+	
 	}
- 
-
-else {
+} else {
     echo "0 results";
 }
 $conn->close();
 ?>
     <!-- main -->
     <div class="main-w3layouts wrapper">
+        <h1>Spastics Society of Karnataka</h1>
+        <h1>Schedules</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="#" method="post">
+                 <input type="submit" value="Status" id="submit">
+                    <input type="submit" value="Schedules" id="submit">
+                </form>
+
             </div>
         </div>
         <!-- //copyright -->

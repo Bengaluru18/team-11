@@ -4,11 +4,18 @@
 
 if(isset($_POST["id"]))
 {
- $connect = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
- $query = "
- DELETE from events WHERE id=:id
- ";
- $statement = $connect->prepare($query);
+$host="localhost";
+$dbusername="root";
+$dbpass="root";
+$dbname="sskdb";
+// Create connection
+$conn = new mysqli($host, $dbusername, $dbpass, $dbname);
+// Check connection2
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$statement = $connect->prepare($query);
  $statement->execute(
   array(
    ':id' => $_POST['id']

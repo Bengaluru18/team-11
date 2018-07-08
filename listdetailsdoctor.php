@@ -29,7 +29,7 @@ if($conn->query($sql)){
 	$result=$conn->query($sql);
 if($result->num_rows>0){
 	while($row = $result->fetch_asoc()){
-		echo "<tr><td>".$row['schedule_date']."</td><td>".$row['schedule_time']"." ".$row['emp_name']."</td><td>".$row['email_id']."</td><td>".$row['contact_number']"." ".$row['deptname']."</td><td>";
+		echo "<tr><td>".$row['schedule_date']."</td><td>".$row['schedule_time']"</td><td>".$row['emp_name']."</td><td>".$row['email_id']."</td><td>".$row['contact_number']."</td><td>".$row['deptname']."</td></tr>";
 }
 else{
     echo "Error:".$sql."<br>".$conn->error;

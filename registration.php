@@ -1,19 +1,22 @@
 <?php
 $patientname=filter_input(INPUT_POST,'Name');
-$age=filter_input(INPUT_POST,'Age');
-//$dob=filter_input(INPUT_POST,'DOB');
-$dob = strtotime($_POST["DOB"]);
-$dob = date('Y-m-d', $day1);
+//$dob=filter_input(INPUT_POST,'DOB
+date_default_timezone_set('Asia/Kolkata');
+
+$dob = filter_input(INPUT_POST,'DOB');
+$newdate = date('Y-m-d', strtotime($dob));
+//$day1 = date('Y-m-d', $dob);
 $parentname=filter_input(INPUT_POST,'pname');
 $contactnum=filter_input(INPUT_POST,'Contact');
 $age=filter_input(INPUT_POST,'Age');
 $regno=filter_input(INPUT_POST,'reg_no');
+$class=filter_input(INPUT_POST,'class');
 if(!empty($patientname)){
 
 if(!empty($age)){
-$host="13.250.26.71";
-$dbusername="abc";
-$dbpass="123";
+$host="localhost";
+$dbusername="root";
+$dbpass="root";
 $dbname="sskdb";
 //Create the connection
 
@@ -24,9 +27,9 @@ echo "error";
 }
 else{
 
-$sql="INSERT INTO patient(name,dob,parent_name,phone_no,reg_no,age) values('$patientname','$dob','$parentname','$contactnum','$regno','$age')";
+$sql="INSERT INTO patient(name,dob,parent_name,phone_no,reg_no,age,class) values('$patientname','$newdate','$parentname','$contactnum','$regno','$age','$class')";
 if($conn->query($sql)){
-echo "New record is inserted successfully";
+echo "<script type='text/javascript'>alert('Successful');window.location.href='receptionist.html';</script>";
 }
 else{
     echo "Error:".$sql."<br>".$conn->error;
